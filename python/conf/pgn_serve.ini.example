@@ -1,0 +1,6 @@
+; Note: It's expected that this file will be available as
+; /etc/pgn_serve.ini at runtime or that a CLI arg is used to
+; provide it to the executable
+
+[server]
+data_dir = /srv
