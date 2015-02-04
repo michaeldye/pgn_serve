@@ -6,15 +6,17 @@ This project is a tiny, self-contained Python webserver that serves PGN-formatte
 
 ### Running the Container
 
-        docker run -d --name pgn_serve -p 8000:8000 -t mdye/pgn_serve
+        docker run -i --rm -p 8000:8000 -v $(realpath data):/srv -t mdye/pgn_serve
+
+Note that this command runs the container in the foreground, not as a daemon. A more realistic use of the `run` command uses the `-d` option to daemonize the container and `docker start` / `docker stop` commands to manipulate instances (see https://docs.docker.com/reference/run/). Note that daemonized instances retain state between stopping and starting again.
 
 ### Using the Service
 
-        curl -i http://localhost:8080/pgn/random
+        curl -i http://localhost:8000/pgn/random
 
 ## Building the Container Yourself
 
-        docker build --rm -t mdye/pgn_serve .
+        docker build -t mdye/pgn_serve .
 
 ## Links
 

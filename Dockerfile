@@ -7,9 +7,6 @@ RUN apt-get update && apt-get install -y python-dev python-pip
 ADD python /src
 RUN cd /src && python setup.py install
 
-# copy data to-serve into container
-ADD data /srv
-
 # write configuration file
 RUN echo "[server]\ndata_dir = /srv" > /etc/pgn_serve.ini
 
